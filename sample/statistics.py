@@ -33,6 +33,20 @@ def average(xs):
     total, count = tail(scan(add, ((x, 1) for x in xs)))[0]
     return total / count
 
+
+def variance(xs):
+    '''
+    population variance of a sequence
+
+    :param xs: the sequence
+
+    >>> variance(range(10))
+    8.25
+    '''
+    sq_total, total, count = tail(scan(add, ((x**2, x, 1) for x in xs)))[0]
+    return sq_total/count - (total/count)**2
+
+
 if __name__ == '__main__':
     import doctest
     doctest.testmod()

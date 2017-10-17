@@ -7,11 +7,16 @@ from matplotlib.pyplot import plot, title
 from numpy import arange
 
 from sample import fib, collatz
-from sample import average, tail
+from sample import average, tail, variance
 
 def test_average():
     f = islice(fib(), 1, 10)
     assert isclose(average(f), 15.777, rel_tol=1e-3) 
+
+def test_variance():
+    f = range(10)
+    assert isclose(variance(f), 8.25, rel_tol=1e-3) 
+
 
 @image_comparison(baseline_images=['average'], extensions=['png'])
 def test_plot_average():
