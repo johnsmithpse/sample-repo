@@ -1,6 +1,7 @@
 #!/usr/bin/env python
-from itertools import islice
 
+from itertools import islice
+from math import isclose
 from matplotlib.testing.decorators import image_comparison
 from matplotlib.pyplot import plot, title
 from numpy import arange
@@ -10,7 +11,7 @@ from sample import average, tail
 
 def test_average():
     f = islice(fib(), 1, 10)
-    assert average(f) == 15.777
+    assert isclose(average(f), 15.777, rel_tol=1e-3) 
 
 @image_comparison(baseline_images=['average'], extensions=['png'])
 def test_plot_average():
